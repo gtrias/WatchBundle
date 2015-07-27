@@ -7,8 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 use Gtrias\WatchBundle\Command\CreateWatcherCommand;
 
-
-class AclManagerCommandTest extends KernelTestCase
+class CreateWatcherCommandTest extends KernelTestCase
 {
     public function testExecute()
     {
@@ -24,15 +23,22 @@ class AclManagerCommandTest extends KernelTestCase
         $commandTester = new CommandTester($command);
         $commandTester->execute(
             array(
-                'target' => '\ACS\ACSPanelBillingBundle\Entity',
-                'property' => 'hasExpired',
-                'service' => 'my.dummy.service',
-                'action' => 'sendNotification',
-                // 'repeat' => false
             )
         );
 
         // This should add User only for admins
-        $this->assertRegExp('/Added/', $commandTester->getDisplay());
+        $this->assertRegExp('/Something went wrong/', $commandTester->getDisplay());
+
+        $commandTester->execute(
+            array(
+                'target' => '\ACS\ACSPanelBillingBundle\Entity',
+                'property' => 'hasExpired',
+                'service' => 'my.dummy.service',
+                'action' => 'sendNotification',
+            )
+        );
+
+        // This should add User only for admins
+        $this->assertRegExp('/Added watcher for \ACS\ACSPanelBillingBundle\Entity/', $commandTester->getDisplay());
     }
 }

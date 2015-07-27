@@ -40,6 +40,18 @@ class CreateWatcherCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('Added');
+        $target = $input->getArgument('target');
+        $property = $input->getArgument('property');
+        $service = $input->getArgument('service');
+        $action = $input->getArgument('action');
+
+        $watcherManager = $this->getContainer()->get('gtrias.watcher_manager');
+
+        if ($watcherManager->addWatcher($target, $property, $service, $action)) {
+            $output->writeln('Added watcher for ' . $target . ' on ' . $property . ' property. Calling ' . $service . ':' . $action);
+        } else {
+            $output->writeln('Something went wrong');
+        }
+
     }
 }
