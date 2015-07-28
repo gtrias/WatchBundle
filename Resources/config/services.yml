@@ -1,0 +1,8 @@
+parameters:
+    gtrias.watcher_manager.class: Gtrias\WatchBundle\Model\WatcherManager
+
+services:
+    gtrias.watcher_manager:
+        class: %gtrias.watcher_manager.class%
+        arguments: ['@doctrine.orm.entity_manager']
+

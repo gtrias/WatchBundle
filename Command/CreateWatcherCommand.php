@@ -17,22 +17,22 @@ class CreateWatcherCommand extends ContainerAwareCommand
             ->setDescription('Add new watcher criteria')
             ->addArgument(
                 'target',
-                InputArgument::OPTIONAL,
+                InputArgument::REQUIRED,
                 'Entity class to watcher work on'
             )
             ->addArgument(
                 'property',
-                InputArgument::OPTIONAL,
+                InputArgument::REQUIRED,
                 'The property to ask if the entity has changed'
             )
             ->addArgument(
                 'service',
-                InputArgument::OPTIONAL,
+                InputArgument::REQUIRED,
                 'The service who will launch the action'
             )
             ->addArgument(
                 'action',
-                InputArgument::OPTIONAL,
+                InputArgument::REQUIRED,
                 'The service action to be executed'
             )
         ;

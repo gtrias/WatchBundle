@@ -19,15 +19,7 @@ class CreateWatcherCommandTest extends KernelTestCase
 
         $command = $application->find('gtrias-watch:create-watcher');
 
-        // Tests for Plan entity
         $commandTester = new CommandTester($command);
-        $commandTester->execute(
-            array(
-            )
-        );
-
-        // This should add User only for admins
-        $this->assertRegExp('/Something went wrong/', $commandTester->getDisplay());
 
         $commandTester->execute(
             array(
@@ -39,6 +31,6 @@ class CreateWatcherCommandTest extends KernelTestCase
         );
 
         // This should add User only for admins
-        $this->assertRegExp('/Added watcher for \ACS\ACSPanelBillingBundle\Entity/', $commandTester->getDisplay());
+        $this->assertRegExp('/Added watcher for /', $commandTester->getDisplay());
     }
 }

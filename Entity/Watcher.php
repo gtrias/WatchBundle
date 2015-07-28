@@ -32,7 +32,7 @@ class Watcher
      * Type of watcher, must be entity or property
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
@@ -187,5 +187,10 @@ class Watcher
     {
         return $this->action;
     }
+    public function getOwners()
+    {
+        return "admins";
+    }
+
 }
 
