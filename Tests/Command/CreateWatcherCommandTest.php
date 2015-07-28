@@ -23,7 +23,7 @@ class CreateWatcherCommandTest extends KernelTestCase
 
         $commandTester->execute(
             array(
-                'target' => '\ACS\ACSPanelBillingBundle\Entity',
+                'target' => '\ACS\ACSPanelBillingBundle\Entity\Contract',
                 'property' => 'hasExpired',
                 'service' => 'my.dummy.service',
                 'action' => 'sendNotification',

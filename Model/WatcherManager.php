@@ -27,4 +27,21 @@ class WatcherManager
 
         return $watcher;
     }
+
+    public function executeWatchers()
+    {
+        $watchers = $this->_em->getRepository('GtriasWatchBundle:Watcher')->findAll();
+
+        foreach ($watchers as $watcher) {
+            $entities = $this->_em->getRepository($watcher->getTarget())
+                ->findAll()
+            ;
+
+            foreach ($entities as $watchedEntity) {
+                if ($watchedEntity->{$watcher->getProperty()}()) {
+                    $service = $this->container->get($watcher->getService());
+                }
+            }
+        }
+    }
 }
