@@ -25,7 +25,7 @@ class ExecuteWatchersCommand extends ContainerAwareCommand
         if ($watcherManager->executeWatchers()) {
             $output->writeln('All watchers executed');
         } else {
-            $output->writeln('Something went wrong');
+            $output->writeln('No watchers executed');
         }
     }
 }

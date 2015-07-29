@@ -24,6 +24,6 @@ class ExecuteWatchersCommandTest extends KernelTestCase
         $commandTester->execute(array());
 
         // This should trigger all the watched services with its entities
-        $this->assertRegExp('All watchers executed', $commandTester->getDisplay());
+        $this->assertRegExp('/All watchers executed/', $commandTester->getDisplay());
     }
 }

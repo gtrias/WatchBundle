@@ -57,6 +57,12 @@ class Watcher
      */
     private $action;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=true)
+     */
+    private $active;
 
     /**
      * Get id
@@ -187,10 +193,33 @@ class Watcher
     {
         return $this->action;
     }
+
     public function getOwners()
     {
         return "admins";
     }
 
-}
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return Watcher
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
 
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+}
